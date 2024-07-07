@@ -20,7 +20,7 @@ const RegisterPage = () => {
           <Grid item xs={12} sm={6}>
             <FormField
               label='First Name'
-              placeholder='Enter your last name'
+              placeholder='Enter your first name'
               icon={<PersonSharp />}
             />
           </Grid>
@@ -29,7 +29,7 @@ const RegisterPage = () => {
             <FormField
               label='Last Name'
               icon={<PersonSharp />}
-              placeholder='Enter yout first name'
+              placeholder='Enter yout last name'
             />
           </Grid>
 
