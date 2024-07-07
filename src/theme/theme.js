@@ -12,6 +12,9 @@ export const theme = createTheme({
     },
     error: {
       main: '#f44336'
+    },
+    text: {
+      secondary: '#9e9e9e'
     }
   }
 })
