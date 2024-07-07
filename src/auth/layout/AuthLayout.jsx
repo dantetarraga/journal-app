@@ -1,26 +1,30 @@
-import { Container, Paper, Typography } from '@mui/material'
+import { Box, Paper, Typography } from '@mui/material'
 import React from 'react'
 
 const AuthLayout = ({ children, title = '', subtitle = '' }) => {
   return (
-    <Container
+    <Box
       component='section'
       sx={{
         display: 'grid',
         placeItems: 'center',
         padding: 4,
-        height: '100vh'
+        height: '100vh',
+        backgroundImage: 'url(/bg-auth.avif)',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover'
       }}
     >
       <Paper
         component='div'
         elevation={3}
         sx={{
-          width: { sm: 450, md: 600 },
-          backgroundColor: 'white',
+          width: { sm: 450, md: 600, lg: 700 },
           padding: 4,
           borderRadius: 4,
-          textAlign: 'center'
+          textAlign: 'center',
+          backgroundColor: 'rgba(255, 255, 255, 0.8)',
+          backdropFilter: 'blur(10px)'
         }}
       >
         <Typography
@@ -36,14 +40,14 @@ const AuthLayout = ({ children, title = '', subtitle = '' }) => {
           variant='body2'
           color='text.secondary'
           fontSize={15}
-          marginBottom={5}
+          marginBottom={2}
         >
           {subtitle}
         </Typography>
 
         {children}
       </Paper>
-    </Container>
+    </Box>
   )
 }
 

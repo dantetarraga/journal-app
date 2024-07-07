@@ -13,7 +13,23 @@ const RegisterPage = () => {
     <AuthLayout title='Welcome to Journal App' subtitle='Capture your thoughts, ideas, and experiences in one place.'>
       <form>
         <Grid container spacing={2}>
-          <Grid item xs={12} sm={12} className='box-shadow'>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label='First Name'
+              variant='outlined'
+              fullWidth
+            />
+          </Grid>
+
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label='Last Name'
+              variant='outlined'
+              fullWidth
+            />
+          </Grid>
+
+          <Grid item xs={12} sm={12}>
             <TextField
               label='Email'
               variant='outlined'
@@ -28,22 +44,6 @@ const RegisterPage = () => {
           <Grid item xs={12} sm={12}>
             <TextField
               label='Password'
-              variant='outlined'
-              type={!showPassword ? 'text' : 'password'}
-              fullWidth
-              InputProps={{
-                endAdornment: (
-                  <IconButton onClick={handleShowPassword}>
-                    {showPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                )
-              }}
-            />
-          </Grid>
-
-          <Grid item xs={12} sm={12}>
-            <TextField
-              label='Repeat password'
               variant='outlined'
               type={!showPassword ? 'text' : 'password'}
               fullWidth
