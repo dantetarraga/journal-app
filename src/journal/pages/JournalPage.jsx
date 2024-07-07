@@ -1,11 +1,11 @@
 import JournalLayout from '../layout/JournalLayout'
-import { NoteView, NothingSelectedView } from '../views'
+import { NothingSelectedView } from '../views'
 
 const JournalPage = () => {
   return (
     <JournalLayout>
       <NothingSelectedView />
-      <NoteView />
+      {/* <NoteView /> */}
     </JournalLayout>
   )
 }
