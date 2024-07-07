@@ -17,9 +17,10 @@ const RegisterPage = () => {
             <TextField
               label='Email'
               variant='outlined'
+              placeholder='example@gmail.com'
               fullWidth
               InputProps={{
-                startAdornment: <EmailSharp />
+                startAdornment: <EmailSharp sx={{ marginRight: 1 }} />
               }}
             />
           </Grid>
@@ -27,6 +28,22 @@ const RegisterPage = () => {
           <Grid item xs={12} sm={12}>
             <TextField
               label='Password'
+              variant='outlined'
+              type={!showPassword ? 'text' : 'password'}
+              fullWidth
+              InputProps={{
+                endAdornment: (
+                  <IconButton onClick={handleShowPassword}>
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                )
+              }}
+            />
+          </Grid>
+
+          <Grid item xs={12} sm={12}>
+            <TextField
+              label='Repeat password'
               variant='outlined'
               type={!showPassword ? 'text' : 'password'}
               fullWidth
@@ -53,7 +70,7 @@ const RegisterPage = () => {
           <Grid container justifyContent='end' sx={{ mt: 1 }}>
             <Link
               component={RouterLink}
-              to='/auth/register'
+              to='/auth/login'
               sx={{
                 color: '#1976d2',
                 '&:hover': {

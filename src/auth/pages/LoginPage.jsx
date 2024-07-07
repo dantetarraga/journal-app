@@ -75,7 +75,7 @@ const LoginPage = () => {
             </Grid>
           </Grid>
 
-          <Grid item justifyContent='end'>
+          <Grid container justifyContent='end' sx={{ mt: 1 }}>
             <Link
               component={RouterLink}
               to='/auth/register'
