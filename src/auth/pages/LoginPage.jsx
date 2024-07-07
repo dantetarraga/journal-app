@@ -1,14 +1,8 @@
-import { EmailSharp, Google, Visibility, VisibilityOff } from '@mui/icons-material'
-import {
-  Button,
-  Grid,
-  IconButton,
-  Link,
-  TextField,
-  Typography
-} from '@mui/material'
+import { EmailSharp, Google, LockSharp } from '@mui/icons-material'
+import { Button, Grid, Link, Typography } from '@mui/material'
 import { useState } from 'react'
 import { Link as RouterLink } from 'react-router-dom'
+import FormField from '../components/FormField'
 import AuthLayout from '../layout/AuthLayout'
 
 const LoginPage = () => {
@@ -24,29 +18,21 @@ const LoginPage = () => {
       <form>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={12} className='box-shadow'>
-            <TextField
+            <FormField
               label='Email'
-              variant='outlined'
-              fullWidth
-              InputProps={{
-                startAdornment: <EmailSharp />
-              }}
+              icon={<EmailSharp />}
+              placeholder='Example@gmail.com'
             />
           </Grid>
 
           <Grid item xs={12} sm={12}>
-            <TextField
+            <FormField
               label='Password'
-              variant='outlined'
-              type={!showPassword ? 'text' : 'password'}
-              fullWidth
-              InputProps={{
-                endAdornment: (
-                  <IconButton onClick={handleShowPassword}>
-                    {showPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                )
-              }}
+              type='password'
+              showPassword={showPassword}
+              handleShowPassword={handleShowPassword}
+              icon={<LockSharp />}
+              placeholder='Enter your password'
             />
           </Grid>
 
@@ -91,7 +77,6 @@ const LoginPage = () => {
               </Typography>
             </Link>
           </Grid>
-
         </Grid>
       </form>
     </AuthLayout>

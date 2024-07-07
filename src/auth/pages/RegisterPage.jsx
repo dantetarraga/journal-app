@@ -1,7 +1,8 @@
-import { EmailSharp, Visibility, VisibilityOff } from '@mui/icons-material'
-import { Button, Grid, IconButton, Link, TextField, Typography } from '@mui/material'
+import { EmailSharp, LockSharp, PersonSharp } from '@mui/icons-material'
+import { Button, Grid, Link, Typography } from '@mui/material'
 import { useState } from 'react'
 import { Link as RouterLink } from 'react-router-dom'
+import FormField from '../components/FormField'
 import AuthLayout from '../layout/AuthLayout'
 
 const RegisterPage = () => {
@@ -10,50 +11,44 @@ const RegisterPage = () => {
   const handleShowPassword = () => setShowPassword(!showPassword)
 
   return (
-    <AuthLayout title='Welcome to Journal App' subtitle='Capture your thoughts, ideas, and experiences in one place.'>
+    <AuthLayout
+      title='Welcome to Journal App'
+      subtitle='Capture your thoughts, ideas, and experiences in one place.'
+    >
       <form>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
-            <TextField
+            <FormField
               label='First Name'
-              variant='outlined'
-              fullWidth
+              placeholder='Enter your last name'
+              icon={<PersonSharp />}
             />
           </Grid>
 
           <Grid item xs={12} sm={6}>
-            <TextField
+            <FormField
               label='Last Name'
-              variant='outlined'
-              fullWidth
+              icon={<PersonSharp />}
+              placeholder='Enter yout first name'
             />
           </Grid>
 
           <Grid item xs={12} sm={12}>
-            <TextField
+            <FormField
               label='Email'
-              variant='outlined'
+              icon={<EmailSharp />}
               placeholder='example@gmail.com'
-              fullWidth
-              InputProps={{
-                startAdornment: <EmailSharp sx={{ marginRight: 1 }} />
-              }}
             />
           </Grid>
 
           <Grid item xs={12} sm={12}>
-            <TextField
+            <FormField
               label='Password'
-              variant='outlined'
-              type={!showPassword ? 'text' : 'password'}
-              fullWidth
-              InputProps={{
-                endAdornment: (
-                  <IconButton onClick={handleShowPassword}>
-                    {showPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                )
-              }}
+              type='password'
+              placeholder='Enter your password'
+              showPassword={showPassword}
+              handleShowPassword={handleShowPassword}
+              icon={<LockSharp />}
             />
           </Grid>
 
@@ -82,7 +77,6 @@ const RegisterPage = () => {
                 Do you already have an account? Log in
               </Typography>
             </Link>
-
           </Grid>
         </Grid>
       </form>
