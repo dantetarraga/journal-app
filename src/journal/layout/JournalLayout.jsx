@@ -6,12 +6,12 @@ const drawerWidth = 240
 
 const JournalLayout = ({ children }) => {
   return (
-    <Box>
+    <Box sx={{ display: 'flex' }}>
       <NavBar drawerWidth={drawerWidth} />
 
       <SideBar drawerWidth={drawerWidth} />
 
-      <Box component='main' sx={{ flexGrow: 1, p: 3 }}>
+      <Box component='main' sx={{ flexGrow: 1, p: 3, height: '100%' }}>
         <Toolbar />
 
         {children}
