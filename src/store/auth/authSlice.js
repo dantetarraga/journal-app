@@ -15,7 +15,9 @@ export const authSlice = createSlice({
   reducers: {
     login: (state, action) => {},
     logout: (state, action) => {},
-    checkingCredentials: (state, action) => {}
+    checkingCredentials: (state, action) => {
+      state.status = 'checking'
+    }
   }
 })
 

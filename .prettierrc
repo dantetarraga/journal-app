@@ -3,21 +3,8 @@
   "singleQuote": true,
   "jsxSingleQuote": true,
   "trailingComma": "none",
-  "importOrder": [
-    "<THIRD_PARTY_MODULES>",
-    "interface",
-    "(?=content|api)",
-    "context/",
-    "mock/",
-    "config",
-    "utils/",
-    "hooks/",
-    "(components/|./index)",
-    ".svg",
-    "^../(.*)$",
-    "(?=./styles.module.scss)"
-  ],
+  "importOrder": ["^@/(.+)$", "^[./]"],
   "importOrderSeparation": true,
-  "importOrderSortSpecifiers": true,
+  "experimentalBabelParserPluginsList": ["jsx"],
   "plugins": ["@trivago/prettier-plugin-sort-imports"]
 }

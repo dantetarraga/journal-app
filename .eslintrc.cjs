@@ -20,6 +20,6 @@ module.exports = {
       { allowConstantExport: true }
     ],
     'react/prop-types': 'off',
-    'react/multiline-ternary': 'never'
+    'multiline-ternary': ['error', 'never']
   }
 }

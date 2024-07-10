@@ -1,23 +1,25 @@
 import { EmailSharp, Google, LockSharp } from '@mui/icons-material'
 import { Button, Grid, Link, Typography } from '@mui/material'
+import { useDispatch } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom'
 
-import FormField from '../components/FormField'
-
 import { useForm, usePasswordVisibility } from '../../hooks'
+import { checkingAuthentication, startGoogleSignIn } from '../../store/auth'
+import FormField from '../components/FormField'
 import AuthLayout from '../layout/AuthLayout'
 
 const LoginPage = () => {
+  const dispatch = useDispatch()
   const { showPassword, togglePasswordVisibility } = usePasswordVisibility()
   const { email, password, onInputChange } = useForm({
     email: '',
     password: ''
   })
 
-  const handleGoogleLogin = () => console.log('Google login')
+  const handleGoogleLogin = () => dispatch(startGoogleSignIn())
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log({ email, password })
+    dispatch(checkingAuthentication(email, password))
   }
 
   return (
