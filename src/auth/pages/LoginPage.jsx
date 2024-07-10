@@ -1,6 +1,7 @@
 import { EmailSharp, Google, LockSharp } from '@mui/icons-material'
 import { Button, Grid, Link, Typography } from '@mui/material'
-import { useDispatch } from 'react-redux'
+import { useMemo } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom'
 
 import { useForm, usePasswordVisibility } from '../../hooks'
@@ -10,12 +11,14 @@ import AuthLayout from '../layout/AuthLayout'
 
 const LoginPage = () => {
   const dispatch = useDispatch()
+  const { status, errorMessage } = useSelector((state) => state.auth)
   const { showPassword, togglePasswordVisibility } = usePasswordVisibility()
   const { email, password, onInputChange } = useForm({
     email: '',
     password: ''
   })
 
+  const isAuthenticating = useMemo(() => status === 'checking', [status])
   const handleGoogleLogin = () => dispatch(startGoogleSignIn())
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -58,6 +61,7 @@ const LoginPage = () => {
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <Button
+                  disabled={isAuthenticating}
                   type='submit'
                   variant='contained'
                   fullWidth
@@ -69,6 +73,7 @@ const LoginPage = () => {
 
               <Grid item xs={12} sm={6}>
                 <Button
+                  disabled={isAuthenticating}
                   variant='contained'
                   fullWidth
                   sx={{ bgcolor: 'primary.button' }}

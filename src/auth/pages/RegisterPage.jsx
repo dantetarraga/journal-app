@@ -2,26 +2,40 @@ import { EmailSharp, LockSharp, PersonSharp } from '@mui/icons-material'
 import { Button, Grid, Link, Typography } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
 
+import { useForm, usePasswordVisibility } from '../../hooks'
 import FormField from '../components/FormField'
-
-import { usePasswordVisibility } from '../../hooks'
 import AuthLayout from '../layout/AuthLayout'
 
 const RegisterPage = () => {
+  const { firstName, lastName, email, password, onInputChange, formState } =
+    useForm({
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: ''
+    })
   const { showPassword, togglePasswordVisibility } = usePasswordVisibility()
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(formState)
+  }
 
   return (
     <AuthLayout
       title='Welcome to Journal App'
       subtitle='Capture your thoughts, ideas, and experiences in one place.'
     >
-      <form>
+      <form onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
             <FormField
               label='First Name'
               placeholder='Enter your first name'
               icon={<PersonSharp />}
+              value={firstName}
+              name='firstName'
+              onChange={onInputChange}
             />
           </Grid>
 
@@ -30,6 +44,9 @@ const RegisterPage = () => {
               label='Last Name'
               icon={<PersonSharp />}
               placeholder='Enter yout last name'
+              value={lastName}
+              name='lastName'
+              onChange={onInputChange}
             />
           </Grid>
 
@@ -38,6 +55,9 @@ const RegisterPage = () => {
               label='Email'
               icon={<EmailSharp />}
               placeholder='example@gmail.com'
+              value={email}
+              name='email'
+              onChange={onInputChange}
             />
           </Grid>
 
@@ -49,11 +69,15 @@ const RegisterPage = () => {
               showPassword={showPassword}
               onShowPassword={togglePasswordVisibility}
               icon={<LockSharp />}
+              value={password}
+              name='password'
+              onChange={onInputChange}
             />
           </Grid>
 
           <Grid item xs={12}>
             <Button
+              type='submit'
               variant='contained'
               fullWidth
               sx={{ bgcolor: 'primary.button' }}
