@@ -22,6 +22,7 @@ const FormField = ({
       value={value}
       fullWidth
       onChange={onChange}
+      autoComplete='off'
       InputProps={{
         startAdornment: (
           <InputAdornment position='start'>
@@ -39,6 +40,9 @@ const FormField = ({
             </IconButton>
           </InputAdornment>
         ),
+        sx: { fontSize: 12 }
+      }}
+      InputLabelProps={{
         sx: { fontSize: 12 }
       }}
       {...props}

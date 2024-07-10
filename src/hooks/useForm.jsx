@@ -1,7 +1,12 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-const useForm = (initialForm = {}) => {
+const useForm = (initialForm = {}, formValidations = {}) => {
   const [formState, setFormState] = useState(initialForm)
+  const [formValidation, setFormValidation] = useState({})
+
+  useEffect(() => {
+    createValidators()
+  }, [formState])
 
   const onInputChange = ({ target }) => {
     const { name, value } = target
@@ -10,11 +15,22 @@ const useForm = (initialForm = {}) => {
 
   const onResetForm = () => setFormState(initialForm)
 
+  const createValidators = () => {
+    const formCheckedValues = Object.fromEntries(
+      Object.entries(formValidations).map(([formField, [fn, errorMessage]]) => {
+        const isValid = fn(formState[formField])
+        return [`${formField}Valid`, isValid ? null : errorMessage]
+      })
+    )
+    setFormValidation(formCheckedValues)
+  }
+
   return {
     ...formState,
     formState,
     onInputChange,
-    onResetForm
+    onResetForm,
+    ...formValidation
   }
 }
 

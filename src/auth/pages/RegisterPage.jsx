@@ -1,24 +1,60 @@
-import { EmailSharp, LockSharp, PersonSharp } from '@mui/icons-material'
-import { Button, Grid, Link, Typography } from '@mui/material'
+import {
+  Email,
+  EmailSharp,
+  LockSharp,
+  PersonSharp,
+  Visibility
+} from '@mui/icons-material'
+import {
+  Button,
+  Grid,
+  IconButton,
+  InputAdornment,
+  Link,
+  TextField,
+  Typography
+} from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
 
 import { useForm, usePasswordVisibility } from '../../hooks'
 import FormField from '../components/FormField'
 import AuthLayout from '../layout/AuthLayout'
 
+const formValidations = {
+  firstName: [(value) => !!value, 'First name is required'],
+  lastName: [(value) => !!value, 'Last name is required'],
+  email: [(value) => value.includes('@'), 'Invalid email address'],
+  password: [
+    (value) => value.length >= 6,
+    'Password must be at least 6 characters'
+  ]
+}
+
+const formData = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: ''
+}
+
 const RegisterPage = () => {
-  const { firstName, lastName, email, password, onInputChange, formState } =
-    useForm({
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: ''
-    })
   const { showPassword, togglePasswordVisibility } = usePasswordVisibility()
+  const {
+    firstName,
+    lastName,
+    email,
+    password,
+    onInputChange,
+    firstNameValid,
+    lastNameValid,
+    emailValid,
+    passwordValid
+  } = useForm(formData, formValidations)
+
+  console.log(firstNameValid)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(formState)
   }
 
   return (
@@ -36,6 +72,8 @@ const RegisterPage = () => {
               value={firstName}
               name='firstName'
               onChange={onInputChange}
+              error={!firstNameValid}
+              helperText={firstNameValid}
             />
           </Grid>
 
@@ -47,6 +85,8 @@ const RegisterPage = () => {
               value={lastName}
               name='lastName'
               onChange={onInputChange}
+              error={!lastNameValid}
+              helperText={lastNameValid}
             />
           </Grid>
 
@@ -58,6 +98,8 @@ const RegisterPage = () => {
               value={email}
               name='email'
               onChange={onInputChange}
+              error={!emailValid}
+              helperText={emailValid}
             />
           </Grid>
 
@@ -72,6 +114,8 @@ const RegisterPage = () => {
               value={password}
               name='password'
               onChange={onInputChange}
+              error={!passwordValid}
+              helperText={passwordValid}
             />
           </Grid>
 
