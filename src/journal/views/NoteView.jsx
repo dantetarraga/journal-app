@@ -4,9 +4,17 @@ import { ImageGallery } from '../components'
 
 const NoteView = () => {
   return (
-    <Grid container direction='row' justifyContent='space-between' alignItems='center' sx={{ mb: 1 }}>
+    <Grid
+      container
+      direction='row'
+      justifyContent='space-between'
+      alignItems='center'
+      sx={{ mb: 1 }}
+    >
       <Grid item>
-        <Typography fontSize={39} fontWeight='light'>28 de agosto, 2023</Typography>
+        <Typography fontSize={39} fontWeight='light'>
+          28 de agosto, 2023
+        </Typography>
       </Grid>
       <Grid item>
         <Button color='primary' sx={{ padding: 2 }}>
@@ -34,9 +42,7 @@ const NoteView = () => {
           minRows={5}
         />
       </Grid>
-
       <ImageGallery />
-
     </Grid>
   )
 }
