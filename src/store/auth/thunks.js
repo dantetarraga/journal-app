@@ -16,7 +16,8 @@ export const startGoogleSignIn = () => {
 
     const result = await signInWithGoogle()
 
-    if (!result.ok) return dispatch(logout(result.errorMessage))
+    if (!result.ok)
+      return dispatch(logout({ errorMessage: result.errorMessage }))
 
     dispatch(login(result))
   }
@@ -37,7 +38,9 @@ export const startCreatingUserWithEmailPassword = ({
       password,
       displayName
     })
-    if (!result.ok) return dispatch(logout(result.errorMessage))
+
+    if (!result.ok)
+      return dispatch(logout({ errorMessage: result.errorMessage }))
 
     dispatch(login(result))
   }

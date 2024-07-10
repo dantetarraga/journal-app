@@ -22,6 +22,7 @@ module.exports = {
     'react/prop-types': 'off',
     'multiline-ternary': ['error', 'never'],
     'no-unused-vars': [2, { vars: 'all', args: 'after-used' }],
-    'react-hooks/exhaustive-deps': 'off'
+    'react-hooks/exhaustive-deps': 'off',
+    curly: 'off'
   }
 }

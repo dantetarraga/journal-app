@@ -1,9 +1,11 @@
 import { EmailSharp, LockSharp, PersonSharp } from '@mui/icons-material'
 import { Button, Grid, Link, Typography } from '@mui/material'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom'
 
 import { useForm, usePasswordVisibility } from '../../hooks'
+import { startCreatingUserWithEmailPassword } from '../../store/auth'
 import FormField from '../components/FormField'
 import AuthLayout from '../layout/AuthLayout'
 
@@ -25,6 +27,7 @@ const formData = {
 }
 
 const RegisterPage = () => {
+  const dispatch = useDispatch()
   const [formSubmitted, setFormSubmitted] = useState(false)
   const { showPassword, togglePasswordVisibility } = usePasswordVisibility()
   const {
@@ -46,7 +49,14 @@ const RegisterPage = () => {
 
     if (!isValidForm) return
 
-    console.log('Form data:', { firstName, lastName, email, password })
+    dispatch(
+      startCreatingUserWithEmailPassword({
+        email,
+        password,
+        firstName,
+        lastName
+      })
+    )
   }
 
   return (
