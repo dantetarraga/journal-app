@@ -1,11 +1,14 @@
 import { EmailSharp, Google, LockSharp } from '@mui/icons-material'
-import { Button, Grid, Link, Typography } from '@mui/material'
+import { Alert, Button, Grid, Link, Typography } from '@mui/material'
 import { useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom'
 
 import { useForm, usePasswordVisibility } from '../../hooks'
-import { checkingAuthentication, startGoogleSignIn } from '../../store/auth'
+import {
+  startGoogleSignIn,
+  startLoginWithEmailPassword
+} from '../../store/auth'
 import FormField from '../components/FormField'
 import AuthLayout from '../layout/AuthLayout'
 
@@ -22,7 +25,8 @@ const LoginPage = () => {
   const handleGoogleLogin = () => dispatch(startGoogleSignIn())
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(checkingAuthentication(email, password))
+    dispatch(startLoginWithEmailPassword({ email, password }))
+    console.log(errorMessage)
   }
 
   return (
@@ -55,6 +59,15 @@ const LoginPage = () => {
               value={password}
               onChange={onInputChange}
             />
+          </Grid>
+
+          <Grid item xs={12}>
+            <Alert
+              severity='error'
+              sx={{ display: errorMessage ? '' : 'none' }}
+            >
+              Incorrect user or password
+            </Alert>
           </Grid>
 
           <Grid item xs={12}>
