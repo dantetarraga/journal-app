@@ -1,20 +1,20 @@
 import { useState } from 'react'
 
-const useForm = () => {
-  const [formState, setFormState] = useState({})
+const useForm = (initialForm = {}) => {
+  const [formState, setFormState] = useState(initialForm)
 
-  const handleInputChange = ({ target }) => {
+  const onInputChange = ({ target }) => {
     const { name, value } = target
-    setFormState((prevState) => ({ ...prevState, [name]: value }))
+    setFormState({ ...formState, [name]: value })
   }
 
-  const handleResetForm = () => setFormState({})
+  const onResetForm = () => setFormState(initialForm)
 
   return {
     ...formState,
     formState,
-    handleInputChange,
-    handleResetForm
+    onInputChange,
+    onResetForm
   }
 }
 

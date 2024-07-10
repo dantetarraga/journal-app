@@ -6,7 +6,10 @@ const FormField = ({
   label,
   type,
   showPassword,
-  handleShowPassword,
+  onShowPassword,
+  onChange,
+  name,
+  value,
   icon,
   ...props
 }) => {
@@ -14,8 +17,11 @@ const FormField = ({
     <TextField
       label={label}
       variant='outlined'
-      type={type}
+      type={type === 'password' && showPassword ? 'text' : type}
+      name={name}
+      value={value}
       fullWidth
+      onChange={onChange}
       InputProps={{
         startAdornment: (
           <InputAdornment position='start'>
@@ -24,8 +30,12 @@ const FormField = ({
         ),
         endAdornment: type === 'password' && (
           <InputAdornment position='end'>
-            <IconButton onClick={handleShowPassword}>
-              {showPassword ? <Visibility sx={{ fontSize: 20 }} /> : <VisibilityOff sx={{ fontSize: 20 }} />}
+            <IconButton onClick={onShowPassword}>
+              {showPassword ? (
+                <Visibility sx={{ fontSize: 20 }} />
+              ) : (
+                <VisibilityOff sx={{ fontSize: 20 }} />
+              )}
             </IconButton>
           </InputAdornment>
         ),

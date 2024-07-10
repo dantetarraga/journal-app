@@ -6,7 +6,8 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
-    './node_modules/standard/eslintrc.json'
+    './node_modules/standard/eslintrc.json',
+    'standard'
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
@@ -18,6 +19,7 @@ module.exports = {
       'warn',
       { allowConstantExport: true }
     ],
-    'react/prop-types': 'off'
+    'react/prop-types': 'off',
+    'react/multiline-ternary': 'never'
   }
 }

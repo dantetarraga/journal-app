@@ -1,27 +1,40 @@
 import { EmailSharp, Google, LockSharp } from '@mui/icons-material'
 import { Button, Grid, Link, Typography } from '@mui/material'
-import { useState } from 'react'
 import { Link as RouterLink } from 'react-router-dom'
+
 import FormField from '../components/FormField'
+
+import { useForm, usePasswordVisibility } from '../../hooks'
 import AuthLayout from '../layout/AuthLayout'
 
 const LoginPage = () => {
-  const [showPassword, setShowPassword] = useState(false)
+  const { showPassword, togglePasswordVisibility } = usePasswordVisibility()
+  const { email, password, onInputChange } = useForm({
+    email: '',
+    password: ''
+  })
 
-  const handleShowPassword = () => setShowPassword(!showPassword)
+  const handleGoogleLogin = () => console.log('Google login')
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log({ email, password })
+  }
 
   return (
     <AuthLayout
       title='Welcome Back!'
       subtitle='Sign in to your account to access your journal.'
     >
-      <form>
+      <form onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={12} className='box-shadow'>
             <FormField
               label='Email'
               icon={<EmailSharp />}
               placeholder='Example@gmail.com'
+              name='email'
+              value={email}
+              onChange={onInputChange}
             />
           </Grid>
 
@@ -30,9 +43,12 @@ const LoginPage = () => {
               label='Password'
               type='password'
               showPassword={showPassword}
-              handleShowPassword={handleShowPassword}
-              icon={<LockSharp />}
               placeholder='Enter your password'
+              icon={<LockSharp />}
+              onShowPassword={togglePasswordVisibility}
+              name='password'
+              value={password}
+              onChange={onInputChange}
             />
           </Grid>
 
@@ -40,6 +56,7 @@ const LoginPage = () => {
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <Button
+                  type='submit'
                   variant='contained'
                   fullWidth
                   sx={{ bgcolor: 'primary.button' }}
@@ -54,6 +71,7 @@ const LoginPage = () => {
                   fullWidth
                   sx={{ bgcolor: 'primary.button' }}
                   startIcon={<Google />}
+                  onClick={handleGoogleLogin}
                 >
                   <Typography>Google</Typography>
                 </Button>

@@ -1,14 +1,14 @@
 import { EmailSharp, LockSharp, PersonSharp } from '@mui/icons-material'
 import { Button, Grid, Link, Typography } from '@mui/material'
-import { useState } from 'react'
 import { Link as RouterLink } from 'react-router-dom'
+
 import FormField from '../components/FormField'
+
+import { usePasswordVisibility } from '../../hooks'
 import AuthLayout from '../layout/AuthLayout'
 
 const RegisterPage = () => {
-  const [showPassword, setShowPassword] = useState(false)
-
-  const handleShowPassword = () => setShowPassword(!showPassword)
+  const { showPassword, togglePasswordVisibility } = usePasswordVisibility()
 
   return (
     <AuthLayout
@@ -47,7 +47,7 @@ const RegisterPage = () => {
               type='password'
               placeholder='Enter your password'
               showPassword={showPassword}
-              handleShowPassword={handleShowPassword}
+              onShowPassword={togglePasswordVisibility}
               icon={<LockSharp />}
             />
           </Grid>
