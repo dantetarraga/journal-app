@@ -6,7 +6,7 @@ import JournalRoutes from '../journal/routes/JournalRoutes'
 import { CheckingAuth } from '../ui/'
 
 const RootRouter = () => {
-  const { status } = useCheckAuth
+  const status = useCheckAuth()
 
   if (status === 'checking') return <CheckingAuth />
 

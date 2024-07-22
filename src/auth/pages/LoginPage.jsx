@@ -23,10 +23,10 @@ const LoginPage = () => {
 
   const isAuthenticating = useMemo(() => status === 'checking', [status])
   const handleGoogleLogin = () => dispatch(startGoogleSignIn())
+
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(startLoginWithEmailPassword({ email, password }))
-    console.log(errorMessage)
   }
 
   return (
