@@ -34,7 +34,10 @@ const LoginPage = () => {
       title='Welcome Back!'
       subtitle='Sign in to your account to access your journal.'
     >
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={handleSubmit}
+        className='animate__animated animate__fadeIn animate__faster'
+      >
         <Grid container spacing={2}>
           <Grid item xs={12} sm={12} className='box-shadow'>
             <FormField

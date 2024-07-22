@@ -16,6 +16,7 @@ import { useSelector } from 'react-redux'
 
 const SideBar = ({ drawerWidth = 240 }) => {
   const { displayName } = useSelector((state) => state.auth)
+
   return (
     <Box component='nav' sx={{ width: drawerWidth, flexShrink: { sm: 0 } }}>
       <Drawer

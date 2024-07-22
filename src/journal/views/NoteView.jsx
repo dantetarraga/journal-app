@@ -1,10 +1,12 @@
 import { SaveOutlined } from '@mui/icons-material'
 import { Button, Grid, TextField, Typography } from '@mui/material'
+
 import { ImageGallery } from '../components'
 
 const NoteView = () => {
   return (
     <Grid
+      className='animate__animated animate__fadeIn animate__faster'
       container
       direction='row'
       justifyContent='space-between'
