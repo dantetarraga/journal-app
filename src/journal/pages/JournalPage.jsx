@@ -14,7 +14,9 @@ const JournalPage = () => {
 
   return (
     <JournalLayout>
-      {active ? <NoteView /> : <NothingSelectedView />}
+      {!!active ? <NoteView /> : <NothingSelectedView />}
+
+      {/* <NoteView /> */}
 
       <IconButton
         onClick={onClickNewNote}

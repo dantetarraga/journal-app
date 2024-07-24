@@ -29,7 +29,7 @@ export const startNewNote = () => {
 
     newNote.id = newDoc.id
 
-    //! dispatch
+    // !dispatch
     dispatch(addNewEmptyNote(newNote))
     dispatch(setActiveNote(newNote))
   }

@@ -23,6 +23,7 @@ module.exports = {
     'multiline-ternary': ['error', 'never'],
     'no-unused-vars': [2, { vars: 'all', args: 'after-used' }],
     'react-hooks/exhaustive-deps': 'off',
-    curly: 'off'
+    curly: 'off',
+    'no-extra-boolean-cast': 'off'
   }
 }
