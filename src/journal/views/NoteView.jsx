@@ -28,12 +28,12 @@ const NoteView = () => {
 
   const { body, title, date, onInputChange, formState } = useForm(note)
 
+  const fileInputRef = useRef()
+
   const dateString = useMemo(() => {
     const newDate = new Date(date)
     return newDate.toUTCString()
   }, [date])
-
-  const fileInputRef = useRef()
 
   useEffect(() => {
     dispatch(setActiveNote(formState))
