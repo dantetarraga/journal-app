@@ -34,7 +34,6 @@ const LoginPage = () => {
   return (
     <AuthLayout
       title='Welcome Back!'
-      subtitle='Sign in to your account to access your journal.'
     >
       <form
         onSubmit={handleSubmit}
