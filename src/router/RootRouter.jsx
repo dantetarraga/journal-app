@@ -18,7 +18,12 @@ const RootRouter = () => {
         <Route path='/auth/*' element={<AuthRoutes />} />
       )}
 
-      <Route path='*' element={<Navigate to='/' />} />
+      <Route
+        path='*'
+        element={
+          status === 'authenticated' ? <Navigate to='/journal' /> : <Navigate to='/auth/login' />
+        }
+      />
     </Routes>
   )
 }
